@@ -23,8 +23,10 @@ type B struct {
 </pre>
 第四步，提供需要注解的对象和被注解的对象
 <pre>
- Go_Resource.Register("b", &b)
- Go_Resource.Register("a", &a)
+ Go_Resource.Register("b", &B{})
+ Go_Resource.Register("a", &A{})
+ 
+ bAddress := &B{}
  Go_Resource.Register("b_pointer", &bAddress)
  utils.AutoSetResourceProperty(Go_Resource.DefaultResourceContext,true)//自动设置属性为注解对象
 </pre>

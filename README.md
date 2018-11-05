@@ -1,14 +1,14 @@
-# Go-Resource a smart easy to use Golang inject  framework,like spring mvc 一个使用go反射实现的简单易用的golang注解框架,依赖倒置,ioc控制反转
+## Go-Resource a smart easy to use Golang inject  framework,like spring mvc 一个使用go反射实现的简单易用的golang注解框架,依赖倒置,ioc控制反转
 #使用方法
-第一步
+### 第一步
 <pre>
 go get github.com/zhuxiujia/Go-Resource
 </pre>
-第二步
+### 第二步
 <pre>
  import ("github.com/zhuxiujia/Go-Resource")
 </pre>
-第三步，定义属性，添加注解
+### 第三步，定义属性，添加注解
 <pre>
 type B struct {
 	Name string
@@ -18,7 +18,7 @@ type B struct {
 	BPointer *B `resource:"b_pointer"` //使用`resource:"b"` 注解注入指针对象
 }
 </pre>
-第四步，提供需要注解的对象和被注解的对象
+### 第四步，提供需要注解的对象和被注解的对象
 <pre>
  Go_Resource.Register("b", &B{})
  Go_Resource.Register("a", &A{})

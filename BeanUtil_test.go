@@ -1,4 +1,4 @@
-package resource
+package Go_Resource
 
 import (
 	"testing"

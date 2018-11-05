@@ -1,8 +1,7 @@
 ## Go-Resource a smart easy to use Golang inject  framework,like spring mvc 
-## 一个使用go反射实现的简单易用的golang注解框架,依赖倒置,ioc控制反转。
-## 支持指针和struct类型,注解属性对象 也支持interface接口类型
-## 智能扫描`resource:"*"`注解，日志会打印忘记注册的对象
-
+<p>
+一个使用go反射实现的简单易用的golang注解框架,依赖倒置,ioc控制反转。 支持指针和struct类型,注解属性对象 也支持interface接口类型 智能扫描`resource:"*"`注解，日志会打印忘记注册的对象
+</p>
 ## 使用方法
 ### 第一步
 <pre>

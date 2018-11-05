@@ -1,5 +1,4 @@
-# Go-Resource
-# a smart easy to use Golang inject  framework,like spring mvc 一个简单易用的golang注解框架,依赖倒置,ioc控制反转
+# Go-Resource a smart easy to use Golang inject  framework,like spring mvc 一个使用go反射实现的简单易用的golang注解框架,依赖倒置,ioc控制反转
 #使用方法
 第一步
 <pre>

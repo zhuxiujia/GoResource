@@ -8,6 +8,10 @@ import (
 var DefaultResourceContext = make(map[string]interface{})
 
 func Register(beanName string,value interface{})  {
+	var v = reflect.ValueOf(value)
+	if v.Kind() != reflect.Ptr {
+		panic("bean `" + beanName + "` must be a ptr!")
+	}
 	DefaultResourceContext[beanName]=value
 }
 

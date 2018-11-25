@@ -5,26 +5,32 @@ import (
 	"fmt"
 )
 
+type PrintName interface {
+	PrintName() string
+}
 
 type B struct {
 	Name string
 }
 
+func (this B) PrintName() string {
+	return this.Name
+}
+
 type A struct {
-	B        B  `resource:"b"`         //使用`resource:"b"` 注解注入对象 Annotated injection object
-	BPointer *B `resource:"b_pointer"` //使用`resource:"b"` 注解注入指针对象
+	B        PrintName `resource:"b"`         //使用`resource:"b"` 注解注入对象 Annotated injection object
+	BPointer *B        `resource:"b_pointer"` //使用`resource:"b"` 注解注入指针对象
 }
 
 //验证注解是否有效
 func (a A) Print() {
-	fmt.Println(a.B.Name)
+	fmt.Println(a.B.PrintName())
 }
+
 //验证注解指针是否有效
 func (a A) PrintBPointer() {
 	fmt.Println(a.BPointer.Name)
 }
-
-
 
 func Test_Inject(t *testing.T) {
 	var b = B{
@@ -32,7 +38,6 @@ func Test_Inject(t *testing.T) {
 	}
 	var a A
 	var bAddress = &b
-
 
 	//You can also customize using your own context, as long as the context type meets the map[string]interface{}
 	//注册到context中,值必须为指向对象的指针类型

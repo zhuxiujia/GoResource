@@ -1,4 +1,4 @@
-## Go-Resource a smart easy to use Golang inject IOC framework,一个简单易用的golang注解框架
+## Go-Resource a smart easy to use Golang inject IOC framework,一个简单易用的golang注解 IOC框架
 
 -使用go反射实现的简单易用的golang注解框架,依赖倒置,ioc控制反转。</br>-支持指针和struct类型,注解属性对象 也支持interface接口类型</br>-能扫描`resource:"*"`注解，日志会打印和提示忘记注册的对象
 

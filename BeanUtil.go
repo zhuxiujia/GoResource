@@ -1,20 +1,19 @@
 package Go_Resource
 
 import (
-	"reflect"
 	"log"
+	"reflect"
 )
 
 var DefaultResourceContext = make(map[string]interface{})
 
-func Register(beanName string,value interface{})  {
+func Register(beanName string, value interface{}) {
 	var v = reflect.ValueOf(value)
 	if v.Kind() != reflect.Ptr {
 		panic("bean `" + beanName + "` must be a ptr!")
 	}
-	DefaultResourceContext[beanName]=value
+	DefaultResourceContext[beanName] = value
 }
-
 
 //`bean:"***"`支持指针和实现interface的struct,指针（指针类型必须完全相同）struct(结构体可以完全一样，或者是继承实现某个接口的 struct)
 //扫描 给所有加了 `bean:"***"` 注解的成员 设置beanMap name关联的对象
@@ -54,7 +53,7 @@ func ScanAndSetProperty(v reflect.Value, beanMap map[string]interface{}, printIn
 		var mapBeanInterface = beanMap[beanName]
 		if mapBeanInterface == nil {
 			if printInfo {
-				log.Println("[resource] property ", v.String(),".", beanName, " not register!")
+				log.Println("[resource] property ", v.String(), ".", beanName, " not register!")
 			}
 			continue
 		}
@@ -65,10 +64,10 @@ func ScanAndSetProperty(v reflect.Value, beanMap map[string]interface{}, printIn
 		}
 		var mapBeanValue = reflect.ValueOf(mapBeanInterface)
 		if mapBeanValue.Kind() != reflect.Ptr {
-			panic("[resource] property = " + v.String() +"."+ beanName + " must be a poiter")
+			panic("[resource] property = " + v.String() + "." + beanName + " must be a poiter")
 		}
 		mapBeanValue = mapBeanValue.Elem()
-		field.Set(mapBeanValue)
+		field.Set(mapBeanValue.Convert(typeFieldItem.Type))
 		count++
 	}
 	return count

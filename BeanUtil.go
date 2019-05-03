@@ -50,10 +50,13 @@ func ScanAndSetProperty(v reflect.Value, beanMap map[string]interface{}, printIn
 			continue
 		}
 		var field = v.Field(i)
+		if typeFieldItem.Type.Kind() != reflect.Ptr && typeFieldItem.Type.Kind() != reflect.Interface {
+			panic("[resource] property " + typeFieldItem.Type.String() + "." + beanName + " not register! must be ptr or interface!")
+		}
 		var mapBeanInterface = beanMap[beanName]
 		if mapBeanInterface == nil {
 			if printInfo {
-				log.Println("[resource] property ", v.String(), ".", beanName, " not register!")
+				log.Println("[resource] property ", typeFieldItem.Type.String(), ".", beanName, " not register!")
 			}
 			continue
 		}
